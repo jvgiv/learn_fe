@@ -65,6 +65,7 @@ export const Auth0Provider = ({
         setLoading(false);
         setIsAuthenticated(true);
         setUser(user)
+        console.log(user)
     }
 
     return (
