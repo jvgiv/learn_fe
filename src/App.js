@@ -7,13 +7,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Profile from './components/Profile'
 
 function App() {
-  // const { loading } = useAuth0()
+  const { loading } = useAuth0()
 
-  // if (loading) {
-  //   return (
-  //     <div>Loading...</div>
-  //   )
-  // }
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    )
+  }
 
   return (
     <div>
