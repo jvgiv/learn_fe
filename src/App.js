@@ -5,15 +5,16 @@ import NavBar from './components/NavBar'
 import { useAuth0 } from './react-auth0-wrapper'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Profile from './components/Profile'
+import LessonSearch from './components/LessonSearch'
 
 function App() {
-  const { loading } = useAuth0()
+  // const { loading } = useAuth0()
 
-  if (loading) {
-    return (
-      <div>Loading...</div>
-    )
-  }
+  // if (loading) {
+  //   return (
+  //     <div>Loading...</div>
+  //   )
+  // }
 
   return (
     <div>
@@ -23,6 +24,7 @@ function App() {
      <Switch>
        <Route path='/' exact />
        <Route path='/profile' component={Profile} />
+       <Route path='/search' component={LessonSearch} />
      </Switch>
     </div>
   );
