@@ -5,7 +5,8 @@ import NavBar from './components/NavBar'
 import { useAuth0 } from './react-auth0-wrapper'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Profile from './components/Profile'
-import LessonSearch from './components/LessonSearch'
+import SkillSearch from './components/SkillSearch'
+import { ApolloProvider } from '@apollo/react-hooks'
 
 function App() {
   // const { loading } = useAuth0()
@@ -24,7 +25,7 @@ function App() {
      <Switch>
        <Route path='/' exact />
        <Route path='/profile' component={Profile} />
-       <Route path='/search' component={LessonSearch} />
+       <Route path='/search' component={SkillSearch} />
      </Switch>
     </div>
   );

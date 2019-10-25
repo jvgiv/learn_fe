@@ -6,7 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, withRouter } from 'react-router-dom'
 import { Auth0Provider } from './react-auth0-wrapper'
 import config from './auth_config.json'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 
+const client = new ApolloClient({
+    uri: 'http://localhost:4000/graphql'
+    // cache: new InMemoryCache()
+})
 
 const onRedirectCallback = appState => {
     window.history.replaceState(
@@ -20,16 +27,18 @@ const onRedirectCallback = appState => {
 
 
 ReactDOM.render(
-    <Auth0Provider
-        domain={config.domain}
-        client_id={config.clientId}
-        redirect_uri={window.location.origin}
-        onRedirectCallback={onRedirectCallback}
-    >
-        <Router>
-            <App />
-        </Router>
-    </Auth0Provider>, document.getElementById('root'));
+    <ApolloProvider client={client}>
+        <Auth0Provider
+            domain={config.domain}
+            client_id={config.clientId}
+            redirect_uri={window.location.origin}
+            onRedirectCallback={onRedirectCallback}
+            >
+            <Router>
+                <App />
+            </Router>
+        </Auth0Provider>
+    </ApolloProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
