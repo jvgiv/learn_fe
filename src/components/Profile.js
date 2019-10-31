@@ -5,8 +5,11 @@ import { useQuery } from '@apollo/react-hooks'
 
 const GET_USER = gql`
     query {
-        getUserById(id: ID!) {
+        getUserById(id: 2) {
             first_name
+            last_name
+            email
+            
         }
     }
 `
@@ -22,11 +25,13 @@ const Profile = () => {
     //     )
     // }
 
-    const { loading, error, data } = useQuery(GET_USER)
+    const { loading, error, data } = useQuery(GET_USER, {
+        variables: { id: 1 }
+    })
     if (loading) return 'Loading...'
     if (error) return `Error! ${error.message}`
 
-    // console.log(user)
+    console.log(data)
     return (
         <div>
 
